@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>7日間の1行ノート｜Clarity Shift Lab</title>
+<meta name="description" content="大事な場面でも、いつもの自分で。力が入る瞬間が分かる、7日間の1行ノート。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Klee+One:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --text:#606060;--text-strong:#4a4a4a;--mute:#9a9a9a;--line:#d9d6d0;--rule:#e6e2dc;
+  --sky:#c9d9e7;--sky-pale:#e8eff4;--sand-pale:#efebe5;--paper:#fbfbfa;--warm:#f4f3f1;--white:#ffffff;
+  --accent:#6f8ea8;--accent-deep:#4f6d86;
+  --f-head:"Klee One",serif;--f-en:"Caveat",cursive;--en-size:22px;--en-style:normal;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--warm);color:var(--text);font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;font-size:15px;line-height:1.95;letter-spacing:.02em}
+button,input,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:480px;margin:0 auto;background:var(--white);min-height:100vh;overflow:hidden}
+.en{font-family:var(--f-en);font-style:var(--en-style);font-size:var(--en-size);letter-spacing:.06em;color:#7d8b97;line-height:1}
+.ck{display:inline-block;white-space:nowrap}
+.rule{width:44px;height:1px;background:var(--line);margin:18px auto}
+.sec{padding:60px 24px 0}
+.sec-head{text-align:center;margin-bottom:26px}
+.sec-head h2{font-family:var(--f-head);font-weight:600;font-size:21px;line-height:1.6;letter-spacing:.1em;color:var(--text-strong);margin-top:10px}
+.sec p+p,.story p+p,.box p+p{margin-top:1.15em}
+.center{text-align:center}
+.small{font-size:13px;color:#7d8b97;line-height:1.9}
+.photo{display:none}
+
+/* hero */
+.hero{padding:20px 20px 0;background:var(--warm)}
+.hero-card{position:relative;border-radius:14px;overflow:hidden;padding:54px 24px 40px;text-align:center;
+  background:linear-gradient(180deg,rgba(232,239,244,.95) 0%,rgba(251,251,250,.96) 62%),repeating-linear-gradient(180deg,transparent 0 33px,rgba(111,142,168,.12) 33px 34px)}
+.hero-card::before{content:"";position:absolute;top:0;bottom:0;left:30px;width:1px;background:rgba(201,140,130,.25)}
+.badge{display:inline-block;font-size:11.5px;letter-spacing:.14em;color:#7d8b97;border:1px solid #c5d3df;border-radius:999px;padding:3px 14px;background:rgba(255,255,255,.8)}
+.hero .copy{font-family:var(--f-head);font-weight:600;font-size:15px;line-height:1.9;letter-spacing:.14em;color:var(--accent-deep);margin-top:24px}
+.hero h1{font-family:var(--f-head);font-weight:600;color:var(--text-strong);font-size:30px;line-height:1.55;letter-spacing:.1em;margin-top:12px}
+.hero h1 small{display:block;font-size:16px;letter-spacing:.16em;color:var(--text);margin-bottom:4px}
+.hero .en-title{font-family:var(--f-en);font-style:var(--en-style);font-size:26px;color:#7d8b97;letter-spacing:.04em;margin-top:18px;line-height:1.2}
+.hero .en-sub{font-family:var(--f-en);font-style:var(--en-style);font-size:17px;color:#a3adb6;letter-spacing:.05em}
+.sample{margin:30px auto 0;max-width:340px;background:var(--white);border-radius:12px;padding:16px 16px 14px;box-shadow:0 6px 20px rgba(70,92,112,.08);text-align:left}
+.sample .lbl{font-size:11px;letter-spacing:.16em;color:var(--mute)}
+.sample .typed{font-family:var(--f-head);font-size:15px;line-height:1.85;color:var(--text-strong);min-height:5.55em;margin-top:6px;white-space:pre-line}
+.sample .typed::after{content:"";display:inline-block;width:1px;height:1em;background:var(--accent);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.steps3{display:flex;justify-content:center;gap:6px;margin-top:26px}
+.steps3 span{white-space:nowrap;font-size:12px;letter-spacing:.06em;color:var(--text-strong);background:rgba(255,255,255,.85);border:1px solid #e2e7ec;border-radius:999px;padding:4px 12px}
+
+/* for you */
+.checks{display:flex;flex-direction:column;gap:10px}
+.check{display:flex;align-items:flex-start;gap:12px;text-align:left;width:100%;background:var(--paper);border:1px solid #eeece8;border-radius:12px;padding:14px 16px;transition:background .3s,border-color .3s}
+.check .box{flex:0 0 20px;height:20px;border-radius:6px;border:1.5px solid #c5d0d9;margin-top:4px;position:relative;transition:background .25s,border-color .25s}
+.check .box::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);transition:transform .25s}
+.check[aria-pressed="true"]{background:var(--sky-pale);border-color:#d6e2ec}
+.check[aria-pressed="true"] .box{background:var(--accent);border-color:var(--accent)}
+.check[aria-pressed="true"] .box::after{transform:rotate(45deg) scale(1)}
+.check-msg{text-align:center;font-family:var(--f-head);font-size:14.5px;line-height:1.9;color:var(--accent-deep);margin-top:16px;min-height:3.8em;opacity:0;transition:opacity .5s}
+.check-msg.on{opacity:1}
+.for-lead{margin-top:14px;text-align:center;font-family:var(--f-head);font-size:16px;line-height:2;color:var(--text-strong)}
+
+/* story */
+.story{background:var(--warm);margin-top:60px;padding:56px 24px 56px}
+.quote{margin:26px 0;padding:20px 18px;border-left:2px solid var(--sky);background:var(--white);border-radius:0 12px 12px 0;font-family:var(--f-head);font-size:16px;line-height:1.9;color:var(--text-strong)}
+.point{margin-top:28px;background:var(--white);border-radius:14px;padding:22px 16px;text-align:center}
+.point p{font-family:var(--f-head);font-size:15px;line-height:2;letter-spacing:.03em;color:var(--text-strong)}
+.point em{font-style:normal;background:linear-gradient(transparent 62%,rgba(201,217,231,.8) 62%)}
+
+/* how to */
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.parts div{background:var(--paper);border:1px solid #eeece8;border-radius:12px;padding:14px 4px 12px;text-align:center;font-size:12px;line-height:1.7;color:var(--text-strong)}
+.parts b{display:block;font-family:var(--f-en);font-style:var(--en-style);font-weight:500;font-size:22px;color:var(--accent);line-height:1;margin-bottom:6px}
+.guide{margin-top:20px;background:var(--paper);border:1px solid #eeece8;border-radius:14px;padding:20px 18px}
+.guide h3{font-family:var(--f-head);font-weight:600;font-size:15.5px;color:var(--text-strong);text-align:center}
+.guide p{font-size:14px;line-height:1.9;text-align:center;margin-top:8px}
+.levels{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.lv{display:flex;align-items:center;gap:12px;background:var(--white);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--text-strong)}
+.lv b{flex:0 0 30px;height:30px;border-radius:8px;background:var(--sky-pale);display:flex;align-items:center;justify-content:center;font-family:var(--f-en);font-style:var(--en-style);font-weight:500;font-size:19px;color:var(--accent-deep)}
+.lv.l5 b{background:var(--accent);color:#fff}
+.guide .note{font-size:12.5px;color:var(--mute);margin-top:10px}
+.maker{margin-top:28px;background:var(--sky-pale);border-radius:16px;padding:24px 18px 22px}
+.maker h3{font-family:var(--f-head);font-weight:600;font-size:16px;letter-spacing:.08em;color:var(--text-strong);text-align:center}
+.maker .small{text-align:center;margin-top:4px}
+.field{margin-top:16px}
+.field label{display:block;font-size:12.5px;letter-spacing:.06em;color:var(--text-strong);margin-bottom:6px}
+.field label b{font-family:var(--f-en);font-style:var(--en-style);font-weight:500;font-size:18px;color:var(--accent);margin-right:6px}
+.field input{width:100%;border:1px solid #dfe6ec;background:var(--white);border-radius:10px;padding:11px 12px;font-size:16px;outline:none}
+.field input:focus{border-color:#b7c7d4}
+.scale{display:flex;gap:6px}
+.scale button{flex:1;height:42px;border-radius:10px;background:var(--white);border:1px solid #dfe6ec;font-family:var(--f-en);font-style:var(--en-style);font-size:22px;color:var(--text-strong);transition:background .25s,color .25s,border-color .25s}
+.scale button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.scale-cap{display:flex;justify-content:space-between;font-size:11px;color:var(--mute);margin-top:4px}
+.result{margin-top:20px;background:var(--white);border-radius:12px;padding:16px;font-family:var(--f-head);font-size:15.5px;line-height:1.9;color:var(--text-strong);min-height:3.8em}
+.result .ph{color:#b8b8b8}
+.maker-btns{display:flex;gap:8px;margin-top:12px}
+.btn-sub{flex:1;font-size:12.5px;letter-spacing:.06em;color:var(--accent-deep);background:var(--white);border:1px solid #d3dee7;border-radius:999px;padding:9px 6px}
+.why-num{margin-top:28px;background:var(--paper);border:1px solid #eeece8;border-radius:14px;padding:20px 18px}
+.why-num h3{font-family:var(--f-head);font-weight:600;font-size:15.5px;color:var(--text-strong)}
+.when{margin-top:20px;text-align:center;font-family:var(--f-head);font-size:15px;line-height:2;color:var(--text-strong)}
+
+/* examples */
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.tab{font-size:13px;letter-spacing:.06em;padding:7px 14px;border-radius:999px;background:var(--paper);border:1px solid #e8e6e2;color:var(--text-strong);transition:background .25s,color .25s}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.flip{margin-top:18px;perspective:1200px;cursor:pointer}
+.flip-inner{position:relative;min-height:220px;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.flip.on .flip-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:24px 18px 20px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.face.front{background:var(--paper);border:1px solid #eeece8}
+.face.back{background:var(--sky-pale);transform:rotateY(180deg)}
+.face .lbl{font-size:11.5px;letter-spacing:.16em;color:var(--mute)}
+.face .line{font-family:var(--f-head);font-size:16px;line-height:1.95;color:var(--text-strong);margin-top:10px}
+.face .seen{font-family:var(--f-head);font-weight:600;font-size:17px;line-height:1.9;color:var(--accent-deep);margin-top:10px}
+.flip-btn{display:block;margin:14px auto 0;font-size:13px;letter-spacing:.08em;color:var(--accent-deep);background:var(--white);border:1px solid #d3dee7;border-radius:999px;padding:9px 22px}
+
+/* 7 days */
+.week{background:var(--sky);margin-top:60px;padding:56px 0 52px}
+.week .sec-head{padding:0 20px}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:22px}
+.dot{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.9);font-family:var(--f-en);font-style:var(--en-style);font-size:19px;color:var(--text-strong);position:relative;transition:background .25s,transform .25s}
+.dot[aria-selected="true"]{background:var(--white);transform:translateY(-2px);box-shadow:0 3px 10px rgba(70,92,112,.15)}
+.dot.filled::after{content:"";position:absolute;right:-1px;top:-1px;width:10px;height:10px;border-radius:50%;background:var(--accent-deep);border:2px solid var(--sky)}
+.daycard{margin:18px 20px 0;background:var(--paper);border-radius:16px;padding:22px 18px 20px}
+.daycard .dh{display:flex;align-items:baseline;justify-content:space-between}
+.daycard .dn{font-family:var(--f-en);font-style:var(--en-style);font-size:30px;color:var(--accent);line-height:1}
+.daycard .saved{font-size:11.5px;color:var(--mute);opacity:0;transition:opacity .4s}
+.daycard .saved.on{opacity:1}
+.hint{margin-top:10px;font-family:var(--f-head);font-size:14.5px;line-height:1.85;color:var(--text-strong)}
+.hint small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:11px;letter-spacing:.14em;color:var(--mute)}
+.daycard textarea{width:100%;margin-top:14px;border:0;border-bottom:1px solid var(--rule);background:repeating-linear-gradient(180deg,transparent 0 31px,var(--rule) 31px 32px);line-height:32px;font-family:var(--f-head);font-size:16px;color:var(--text-strong);padding:0 2px;resize:none;outline:none;min-height:96px}
+.daycard .scale{margin-top:14px}
+.none-btn{margin-top:10px;font-size:12.5px;color:var(--accent-deep);border:1px dashed #b7c7d4;border-radius:999px;padding:7px 14px;background:var(--white)}
+.none-btn[aria-pressed="true"]{background:var(--accent);color:#fff;border-style:solid;border-color:var(--accent)}
+.day-nav{display:flex;justify-content:space-between;margin:14px 20px 0}
+.day-nav button{font-size:13px;color:var(--text-strong);padding:6px 4px}
+.day-nav button[disabled]{opacity:.3}
+.wnote{margin:18px 20px 0;font-size:12.5px;line-height:1.85;color:#5f7488;text-align:center}
+.copy-all{display:block;margin:16px auto 0;font-size:13px;letter-spacing:.06em;color:var(--accent-deep);background:var(--white);border-radius:999px;padding:10px 22px}
+
+/* review */
+.list{display:flex;flex-direction:column;gap:6px}
+.li{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid #eeece8;border-radius:10px;padding:10px 12px;font-size:13.5px;line-height:1.8}
+.li .d{font-family:var(--f-en);font-style:var(--en-style);font-size:18px;color:var(--accent);flex:0 0 40px;line-height:1.4}
+.li .t{flex:1;color:var(--text-strong);font-family:var(--f-head)}
+.li .n{flex:0 0 auto;font-family:var(--f-en);font-style:var(--en-style);font-size:18px;color:var(--mute);line-height:1.4}
+.li.top{background:var(--sky-pale);border-color:#d6e2ec}
+.li.top .n{color:var(--accent-deep)}
+.li.empty .t{color:#bdbdbd}
+.qs{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.q{background:var(--white);border:1px solid #eeece8;border-radius:14px;padding:18px 16px}
+.q .qn{font-family:var(--f-en);font-style:var(--en-style);font-size:18px;letter-spacing:.06em;color:var(--accent)}
+.q .qt{font-family:var(--f-head);font-weight:600;font-size:15.5px;line-height:1.8;color:var(--text-strong);margin-top:2px}
+.q .qe{font-size:12px;color:var(--mute);margin-top:4px;line-height:1.8}
+.q .auto{margin-top:10px;font-size:13px;line-height:1.8;color:var(--accent-deep);background:var(--sky-pale);border-radius:8px;padding:8px 10px;display:none}
+.q .auto.on{display:block}
+.q input{width:100%;margin-top:10px;border:0;border-bottom:1px solid var(--rule);padding:6px 2px;font-family:var(--f-head);font-size:16px;outline:none;background:transparent}
+.found{margin-top:26px;text-align:center;font-family:var(--f-head);font-size:16px;line-height:2;color:var(--text-strong)}
+
+/* routine */
+.routine{background:var(--warm);margin-top:60px;padding:56px 24px 56px}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rules div{background:var(--white);border-radius:12px;padding:14px 4px;text-align:center;font-size:12px;line-height:1.7;color:var(--text-strong)}
+.rules b{display:block;font-family:var(--f-en);font-style:var(--en-style);font-weight:500;font-size:20px;color:var(--accent);line-height:1;margin-bottom:6px}
+.picks{margin-top:26px;display:flex;flex-direction:column;gap:8px}
+.pick{text-align:left;width:100%;background:var(--white);border:1px solid #ecebe7;border-radius:12px;padding:13px 16px;font-family:var(--f-head);font-size:15px;line-height:1.7;color:var(--text-strong);display:flex;align-items:center;gap:12px;transition:background .25s,border-color .25s}
+.pick .rd{flex:0 0 18px;height:18px;border-radius:50%;border:1.5px solid #c5d0d9;position:relative}
+.pick[aria-pressed="true"]{background:var(--sky-pale);border-color:#d6e2ec}
+.pick[aria-pressed="true"] .rd{border-color:var(--accent)}
+.pick[aria-pressed="true"] .rd::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent)}
+.own{margin-top:8px}
+.own input{width:100%;border:1px dashed #c5d0d9;background:var(--white);border-radius:12px;padding:12px 16px;font-family:var(--f-head);font-size:16px;outline:none}
+.mine{margin-top:16px;text-align:center;font-size:13.5px;color:var(--text);line-height:1.9}
+.mycard{margin-top:30px;background:var(--white);border-radius:18px;padding:30px 22px 26px;text-align:center;box-shadow:0 10px 30px rgba(70,92,112,.08);position:relative;overflow:hidden}
+.mycard::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 33px,rgba(111,142,168,.08) 33px 34px);pointer-events:none}
+.mycard>*{position:relative}
+.mycard .en{font-size:calc(var(--en-size) + 2px)}
+.mycard h3{font-family:var(--f-head);font-weight:600;font-size:16px;line-height:1.7;letter-spacing:.06em;color:var(--text-strong);margin-top:6px}
+.mycard dl{margin-top:20px;text-align:left}
+.mycard dt{font-size:11.5px;letter-spacing:.16em;color:var(--mute)}
+.mycard dd{font-family:var(--f-head);font-size:16px;line-height:1.8;color:var(--text-strong);margin:2px 0 14px;min-height:1.8em;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.mycard dd.ph{color:#c2c2c2;font-size:14px}
+.mycard .then{font-family:var(--f-head);font-size:14px;line-height:1.9;color:var(--accent-deep);margin-top:6px}
+
+/* important */
+.imp{padding:60px 24px 0}
+.imp .box{border:1px solid var(--sky);border-radius:16px;padding:26px 18px}
+.imp .lead{font-family:var(--f-head);font-weight:600;font-size:17px;line-height:1.9;color:var(--text-strong);text-align:center}
+.imp .box>p:not(.lead){text-align:center}
+.moments{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:18px 0}
+.moments span{font-size:12.5px;background:var(--sky-pale);color:var(--accent-deep);border-radius:999px;padding:4px 12px}
+
+/* faq */
+.faq{display:flex;flex-direction:column;gap:10px}
+.fq{background:var(--paper);border:1px solid #eeece8;border-radius:12px;overflow:hidden}
+.fq button{width:100%;text-align:left;padding:15px 40px 15px 16px;font-family:var(--f-head);font-weight:600;font-size:14.5px;line-height:1.7;color:var(--text-strong);position:relative}
+.fq button::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border:solid var(--accent);border-width:0 1.5px 1.5px 0;transform:translateY(-70%) rotate(45deg);transition:transform .3s}
+.fq.open button::after{transform:translateY(-30%) rotate(-135deg)}
+.fq .a{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.fq .a p{padding:0 16px 16px;font-size:14px;line-height:1.95}
+
+/* closing */
+.closing{padding:64px 24px 52px;text-align:center}
+.closing p{font-family:var(--f-head);font-size:16px;line-height:2.1;color:var(--text-strong)}
+.closing p+p{margin-top:1.3em}
+.line-btn{display:inline-flex;align-items:center;gap:8px;margin-top:22px;background:#06c755;color:#fff;font-size:14px;font-weight:500;letter-spacing:.08em;padding:12px 26px;border-radius:999px;text-decoration:none}
+.sign{margin-top:30px;font-family:var(--f-head);font-size:14px;color:var(--text);letter-spacing:.1em}
+footer{text-align:center;font-size:11.5px;color:var(--mute);padding:26px 0 36px;border-top:1px solid #f0eeea;line-height:2}
+footer a{color:var(--mute)}
+.fade{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+.fade.show{opacity:1;transform:none}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:rgba(69,69,69,.92);color:#fff;font-size:13px;padding:9px 18px;border-radius:999px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}.flip-inner{transition:none}.sample .typed::after{animation:none}}
+
+/* ===================== THEME B（会員サイトの雰囲気） ===================== */
+body.tb{
+  --text:#5c5c5c;--text-strong:#454545;--mute:#9a9a9a;--line:#e3e0da;--rule:#e3e0da;
+  --sky:#dde6ed;--sky-pale:#eef3f6;--paper:#fcfcfb;--warm:#f6f5f2;
+  --accent:#6f8ea8;--accent-deep:#4f6d86;--navy:#33495c;
+  --f-head:"Shippori Mincho","Yu Mincho","Hiragino Mincho ProN",serif;--f-en:"Cormorant Garamond",Georgia,serif;--en-size:20px;--en-style:italic;
+  background:var(--warm);
+}
+body.tb .wrap{background:var(--warm)}
+body.tb .en{color:var(--accent);letter-spacing:.08em}
+body.tb .sec-head h2{font-weight:500;letter-spacing:.12em;color:var(--navy)}
+body.tb .sec-head h2::after{content:"";display:block;width:28px;height:1px;background:var(--accent);margin:14px auto 0;opacity:.6}
+body.tb .photo{display:block}
+/* hero */
+body.tb .hero{padding:0;background:var(--warm)}
+body.tb .hero-card{border-radius:0;padding:0;background:none}
+body.tb .hero-card::before{display:none}
+body.tb .hero-photo{position:relative;height:440px;background:#dfe7ee center/cover no-repeat}
+body.tb .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(246,245,242,0) 55%,rgba(246,245,242,1) 100%)}
+body.tb .hero-photo .badge{position:absolute;left:20px;top:20px;z-index:1;background:rgba(255,255,255,.85);border-color:rgba(255,255,255,.9);color:var(--accent-deep)}
+body.tb .hero-photo .vert{position:absolute;right:22px;top:28px;z-index:1;writing-mode:vertical-rl;font-family:var(--f-head);font-size:15px;letter-spacing:.32em;color:var(--navy);text-shadow:0 0 12px rgba(255,255,255,.7)}
+body.tb .hero-body{position:relative;margin:-90px 20px 0;background:#fff;border-radius:16px;padding:34px 22px 28px;box-shadow:0 14px 40px rgba(51,73,92,.10);z-index:2}
+body.tb .hero .copy{margin-top:0;font-weight:500;color:var(--accent-deep);letter-spacing:.16em}
+body.tb .hero h1{font-weight:500;color:var(--navy);letter-spacing:.12em}
+body.tb .hero h1 small{color:var(--text);font-size:15px}
+body.tb .hero .en-title{color:var(--accent);font-size:28px}
+body.tb .hero .en-sub{color:#a3adb6}
+body.tb .sample{box-shadow:none;background:var(--sky-pale)}
+body.tb .steps3 span{background:var(--warm);border-color:var(--line)}
+body.tb .hero-wrap-pad{padding:0 0 10px}
+/* sections */
+body.tb .sec{padding-top:64px}
+body.tb .check{background:#fff;border-color:var(--line)}
+body.tb .story{background:#fff}
+body.tb .quote{background:var(--warm);border-left-color:var(--accent)}
+body.tb .point{background:var(--warm)}
+body.tb .parts div,body.tb .guide,body.tb .why-num,body.tb .face.front,body.tb .q,body.tb .li,body.tb .fq{background:#fff;border-color:var(--line)}
+body.tb .tab{background:#fff}
+body.tb .tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+body.tb .week{background:var(--navy);color:#e8eef3}
+body.tb .week .en{color:#b9cad8}
+body.tb .week .sec-head h2{color:#fff}
+body.tb .week .sec-head h2::after{background:#b9cad8}
+body.tb .week .small{color:#c9d6e0}
+body.tb .dot{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff}
+body.tb .dot[aria-selected="true"]{background:#fff;color:var(--navy)}
+body.tb .dot.filled::after{background:#b9cad8;border-color:var(--navy)}
+body.tb .day-nav button{color:#e8eef3}
+body.tb .wnote{color:#c9d6e0}
+body.tb .daycard{background:#fff}
+body.tb .routine{background:#fff}
+body.tb .rules div{background:var(--warm)}
+body.tb .pick,body.tb .own input{background:var(--warm);border-color:var(--line)}
+body.tb .imp .box{background:#fff;border-color:var(--line)}
+/* photo bands */
+body.tb .band{position:relative;height:260px;margin-top:64px;background:#dfe7ee center/cover no-repeat;display:flex;align-items:flex-end}
+body.tb .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(246,245,242,0) 40%,rgba(246,245,242,.9) 100%)}
+body.tb .band.dark::after{background:linear-gradient(180deg,rgba(51,73,92,0) 35%,rgba(51,73,92,.85) 100%)}
+body.tb .band p{position:relative;z-index:1;padding:0 24px 22px;font-family:var(--f-head);font-size:16px;line-height:1.9;letter-spacing:.1em;color:var(--navy)}
+body.tb .band.dark p{color:#fff}
+body.tb .band + .week{margin-top:0}
+body.tb .band + .routine{margin-top:0}
+body.tb .closing{position:relative;margin-top:64px;padding:72px 24px 56px;background:#fff center/cover no-repeat}
+body.tb .closing::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.86)}
+body.tb .closing>*{position:relative}
+body.tb footer{background:var(--warm);border-top-color:var(--line)}
+</style>
+</head>
+<body class="tb">
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-card">
+      <div class="photo hero-photo" style="background-image:url('https://images.unsplash.com/photo-1743952200454-162dfd8c801a?w=1000&q=80&fm=jpg')">
+        <span class="badge">今週の特典</span>
+        <span class="vert">いつもの自分で</span>
+      </div>
+      <div class="hero-body">
+        <span class="badge th-a">今週の特典</span>
+        <p class="copy">大事な場面でも、<br>いつもの自分で。</p>
+        <h1><small>力が入る瞬間が分かる</small>7日間の<br>1行ノート</h1>
+        <p class="en-title">Your Usual Self</p>
+        <p class="en-sub">The Note for Your Moment</p>
+        <div class="sample" aria-hidden="true">
+          <p class="lbl">たとえば、今夜の1行</p>
+          <p class="typed" id="typed"></p>
+        </div>
+        <div class="steps3"><span>1日1行</span><span>7日間</span><span>寝る前でOK</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="sec fade">
+    <div class="sec-head"><p class="en">For you</p><h2>こんな人へ</h2></div>
+    <p class="small center" style="margin-bottom:14px">当てはまるものを、押してみてください</p>
+    <div class="checks" id="checks">
+      <button class="check" aria-pressed="false"><span class="box"></span><span>会議で自分の番が近づくと、<br>急にドキドキしてくる</span></button>
+      <button class="check" aria-pressed="false"><span class="box"></span><span>LINEの返信を、<br>何回も書き直してしまう</span></button>
+      <button class="check" aria-pressed="false"><span class="box"></span><span>人と話したあと、<br>ひとり反省会が止まらない</span></button>
+      <button class="check" aria-pressed="false"><span class="box"></span><span>大事な場面ほど、<br>いつもの自分が出せない</span></button>
+    </div>
+    <p class="check-msg" id="checkMsg">1つでも当てはまったら、<br>7日間だけ試してみてください✍🏻</p>
+    <p class="for-lead">そんな人のために、<br>1日1行で「自分が力む瞬間」を<br>見つけるノートを<br>作ってみました！</p>
+  </section>
+
+  <section class="story fade">
+    <div class="sec-head"><p class="en">Why</p><h2>なぜ「瞬間」を書くのか</h2></div>
+    <p>僕は10年間、<br>公式戦で打てない選手でした。</p>
+    <p>練習では打てるのに、<br>公式戦になると、<br>別人みたいに打てなくなる。</p>
+    <div class="quote">「ここで打てなかったら、<br>僕の居場所がなくなる」</div>
+    <p>打席に立つたびにそう思って、<br>周りからの視線ばかり<br>気にしていました。</p>
+    <p>変わったのは、自分がどの瞬間に<br>力が入るのかが分かってからです。</p>
+    <p>そこが分かったから、<br>打席に入る前に、いつも同じ呼吸を<br>入れるようにしました。</p>
+    <div class="point">
+      <p>力みって、<br>急にやってくるように見えて、<br>実は<em>「いつも決まった瞬間」</em>に<br>やってきます。</p>
+      <div class="rule"></div>
+      <p>だから、その瞬間が<br>どこか分かれば、<br>前もって準備ができるんです！</p>
+    </div>
+  </section>
+
+  <div class="photo band" style="background-image:url('https://images.unsplash.com/photo-1611079830811-865ff4428d17?w=1000&q=80&fm=jpg')"><p>1日1行だけで、<br>大丈夫です。</p></div>
+
+  <section class="sec fade">
+    <div class="sec-head"><p class="en">How to</p><h2>書き方は、1日1行だけ</h2></div>
+    <p class="center">1行に入れるのは、<br>この3つだけです。</p>
+    <div class="parts" style="margin-top:18px">
+      <div><b>01</b>どの瞬間に</div>
+      <div><b>02</b>何が<br><span class="ck">気になったか</span></div>
+      <div><b>03</b>力の<span class="ck">入り具合</span><br>（1〜5）</div>
+    </div>
+
+    <div class="guide">
+      <h3>力の入り具合の選び方</h3>
+      <p>その瞬間、どのくらい<br>力が入ったかを、<br>1〜5の数字で選びます。</p>
+      <div class="levels">
+        <div class="lv"><b>1</b>少しだけ気になった</div>
+        <div class="lv"><b>3</b>はっきりドキドキした</div>
+        <div class="lv l5"><b>5</b>頭が真っ白になりそう</div>
+      </div>
+      <p class="note">2と4は、その間くらいでOKです。<br>なんとなくで選んで大丈夫です。</p>
+    </div>
+
+    <div class="maker">
+      <h3>試しに、1行作ってみる</h3>
+      <p class="small">3つを入れると、<br>下に1行ができあがります</p>
+      <div class="field"><label for="mk1"><b>01</b>どの瞬間に</label><input id="mk1" type="text" placeholder="例）自分の番が来た瞬間" autocomplete="off"></div>
+      <div class="field"><label for="mk2"><b>02</b>何が気になったか</label><input id="mk2" type="text" placeholder="例）上司の表情" autocomplete="off"></div>
+      <div class="field"><label><b>03</b>力の入り具合</label>
+        <div class="scale" id="mkScale"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+        <div class="scale-cap"><span>1 少しだけ</span><span>5 頭が真っ白</span></div>
+      </div>
+      <div class="result" id="mkResult"><span class="ph">ここに1行ができます</span></div>
+      <div class="maker-btns">
+        <button class="btn-sub" id="mkEx">例を入れてみる</button>
+        <button class="btn-sub" id="mkToDay">Day1に書き写す</button>
+      </div>
+    </div>
+
+    <div class="why-num">
+      <h3>なんで数字をつけるの？</h3>
+      <p style="margin-top:8px">同じ場面でも、日によって<br>力の入り方は違います。</p>
+      <p>数字があると、見返した時に<br>「一番力が入る場面」が<br>すぐに分かるからです！</p>
+    </div>
+    <p class="when">書くのは、その日の夜、<br>寝る前でOK。1行で十分です。</p>
+  </section>
+
+  <section class="sec fade">
+    <div class="sec-head"><p class="en">Examples</p><h2>記入例</h2></div>
+    <p class="center small" style="margin-bottom:16px">自分に近いものを参考にしてください！</p>
+    <div class="tabs" role="tablist" id="tabs">
+      <button class="tab" role="tab" aria-selected="true">職場で</button>
+      <button class="tab" role="tab" aria-selected="false">LINEで</button>
+      <button class="tab" role="tab" aria-selected="false">友達・家族と</button>
+    </div>
+    <div class="flip" id="flip">
+      <div class="flip-inner">
+        <div class="face front"><p class="lbl">ある日の1行</p><p class="line" id="exLine"></p></div>
+        <div class="face back"><p class="lbl">見えたこと</p><p class="seen" id="exSeen"></p></div>
+      </div>
+    </div>
+    <button class="flip-btn" id="flipBtn">めくって「見えたこと」を見る</button>
+  </section>
+
+  <div class="photo band dark" style="background-image:url('https://images.unsplash.com/photo-1762571590351-a81670613d8f?w=1000&q=80&fm=jpg')"><p>今日から7日間、<br>寝る前に1行だけ。</p></div>
+
+  <section class="week fade" id="week">
+    <div class="sec-head"><p class="en">7 days</p><h2>7日間シート</h2></div>
+    <p class="small center">毎日書くのは1行だけ。<br>「ヒント」は、書くことが<br>浮かばない日に使ってください！</p>
+    <div class="dots" id="dots" role="tablist"></div>
+    <div class="daycard" id="daycard">
+      <div class="dh"><span class="dn" id="dn">Day1</span><span class="saved" id="saved">保存しました</span></div>
+      <p class="hint" id="hint"></p>
+      <textarea id="dayText" rows="3" placeholder="今日の1行"></textarea>
+      <div class="scale" id="dayScale"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+      <div class="scale-cap"><span>1 少しだけ</span><span>5 頭が真っ白</span></div>
+      <button class="none-btn" id="noneBtn" aria-pressed="false">今日はなかった</button>
+    </div>
+    <div class="day-nav"><button id="prevDay">‹ 前の日</button><button id="nextDay">次の日 ›</button></div>
+    <p class="wnote">力が入る瞬間がなかった日は、<br><span class="ck">「今日はなかった」を</span><span class="ck">押すだけでOK。</span><br>それも大事な1行なので。</p>
+    <p class="wnote">書いた内容は、<br>このスマホの中だけに残るので、<br>書きたいことを、たくさん書いてください✍🏻</p>
+    <button class="copy-all" id="copyAll">7日分をまとめてコピーする</button>
+  </section>
+
+  <section class="sec fade">
+    <div class="sec-head"><p class="en">After 7 days</p><h2>7日後の見返しワーク</h2></div>
+    <p class="center">7日分の1行を並べて、<br>この3つを見てみてください。</p>
+    <div class="list" id="list" style="margin-top:20px"></div>
+    <div class="qs">
+      <div class="q"><p class="qn">Question 1</p><p class="qt">一番多く出てきた<br>「瞬間」は？</p><input id="q1" type="text" placeholder="ここにメモ" autocomplete="off"></div>
+      <div class="q"><p class="qn">Question 2</p><p class="qt">数字が一番大きかった<br>場面は？</p><p class="auto" id="q2auto"></p><input id="q2" type="text" placeholder="ここにメモ" autocomplete="off"></div>
+      <div class="q"><p class="qn">Question 3</p><p class="qt">その瞬間の"前"に、<br>共通していることは？</p><p class="qe">例）話すまでの待ち時間／<br>相手の反応が見えない時／断る前の一瞬</p><input id="q3" type="text" placeholder="ここにメモ" autocomplete="off"></div>
+    </div>
+    <p class="found">ここで見つかったものが、<br>あなたの「力みポイント」です☝🏻</p>
+  </section>
+
+  <div class="photo band" style="background-image:url('https://images.unsplash.com/photo-1780523893199-8f0fdab83909?w=1000&q=80&fm=jpg')"><p>力みポイントの前に、<br>いつもの動作を1つ。</p></div>
+
+  <section class="routine fade">
+    <div class="sec-head"><p class="en">Routine</p><h2>自分なりの<span class="ck">ルーティンを作る</span></h2></div>
+    <p class="center">力みポイントの"前"に、<br>毎回同じ動作を1つ入れてみましょう！</p>
+    <p class="center small" style="margin-top:22px">選び方は、この3つ</p>
+    <div class="rules" style="margin-top:10px">
+      <div><b>5 sec</b>5秒で<br>できる</div>
+      <div><b>quiet</b>周りの人に<br><span class="ck">気づかれない</span></div>
+      <div><b>anywhere</b>どこでも<br>できる</div>
+    </div>
+    <p class="center small" style="margin-top:26px">たとえば、こんなもの。<br>1つ選んでみてください</p>
+    <div class="picks" id="picks">
+      <button class="pick" aria-pressed="false" data-v="ゆっくり息を吐く"><span class="rd"></span><span>ゆっくり息を吐く</span></button>
+      <button class="pick" aria-pressed="false" data-v="飲み物を一口飲む"><span class="rd"></span><span>飲み物を一口飲む</span></button>
+      <button class="pick" aria-pressed="false" data-v="資料をトントンとそろえる"><span class="rd"></span><span>資料をトントンとそろえる</span></button>
+      <button class="pick" aria-pressed="false" data-v="足の裏が床についている感覚を確かめる"><span class="rd"></span><span>足の裏が床についている<br>感覚を確かめる</span></button>
+      <button class="pick" aria-pressed="false" data-v="ペンを一度置く"><span class="rd"></span><span>ペンを一度置く</span></button>
+    </div>
+    <div class="own"><input id="ownRoutine" type="text" placeholder="自分で考えたものを書く" autocomplete="off"></div>
+    <p class="mine">僕の場合は、<br>打席に入る前の呼吸でした。<br>自分がやりやすいものなら、<br>何でもOKです！</p>
+
+    <div class="mycard" id="mycard">
+      <p class="en">My Card</p>
+      <h3>わたしの<br>「いつもの自分」カード</h3>
+      <dl>
+        <dt>力みポイント</dt><dd id="cdPoint" class="ph">Question 3を書くと入ります</dd>
+        <dt>その前に、すること</dt><dd id="cdRoutine" class="ph">ルーティンを選ぶと入ります</dd>
+      </dl>
+      <p class="then">スクショしておくと、<br>いつでも見返せます🌱</p>
+    </div>
+  </section>
+
+  <section class="imp fade">
+    <div class="sec-head"><p class="en">Most important</p><h2>一番大事なこと</h2></div>
+    <div class="box">
+      <p class="lead">ルーティンは、<br>大事な場面の時だけ<br>やるものではありません。</p>
+      <div class="rule"></div>
+      <p>僕は練習の打席から、<br>公式戦とまったく同じ呼吸を<br>してから入っていました。</p>
+      <p>いつもと同じことをするから、<br>公式戦の打席も<br>「いつもの打席」に<br>なっていったんです。</p>
+      <p>だから、小さな場面でも、<br>毎回やってみてください。</p>
+      <div class="moments"><span>朝のミーティングで話す前</span><span>電話に出る前</span><span>LINEを送る前</span></div>
+      <p>続けるほど、<br>その動作をするだけで<br>「いつもの自分」に<br>戻りやすくなっていきます🌱</p>
+    </div>
+  </section>
+
+  <section class="sec fade">
+    <div class="sec-head"><p class="en">Q&amp;A</p><h2>よくある質問</h2></div>
+    <div class="faq" id="faq">
+      <div class="fq"><button>書けない日があったら？</button><div class="a"><p>次の日からまた書けばOKです！<br>大事なのは、7日間続けることより、<br>自分の瞬間を1つ見つけることです。</p></div></div>
+      <div class="fq"><button>瞬間が思い出せない時は？</button><div class="a"><p>「今日はなかった」を押すだけでOK。<br>なかった日と比べることで、<br>力が入る日の共通点が見えてきます。</p></div></div>
+      <div class="fq"><button>ルーティンをしても緊張する？</button><div class="a"><p>ルーティンは、緊張をゼロにする<br>ためのものではありません。<br>緊張していても「いつもの自分」に<br>戻るきっかけを作るためのものです。</p></div></div>
+    </div>
+  </section>
+
+  <section class="closing fade">
+    <p class="en" style="margin-bottom:18px">Message</p>
+    <p>7日間、おつかれさまでした！</p>
+    <p>自分がどの瞬間に<br>力が入るのかを知っていると、<br>大事な場面の前に、自分で<br>準備ができるようになります。</p>
+    <p>書いてみて気づいたことがあれば、<br>DMで気軽に教えてくださいね🕊️</p>
+    <p>全部しっかり読んで、<br>じっくり返信させてもらってます！</p>
+    <p style="font-size:14.5px">もっと自分のことを知りたい人は、<br>LINE登録者限定の無料5大特典も<br>受け取ってみてください🌱</p>
+    <a class="line-btn" href="https://line.me/R/ti/p/@585sfqhv" target="_blank" rel="noopener">LINEで5大特典を受け取る</a>
+    <p class="sign">Inner Clarity Coach　たか</p>
+  </section>
+
+  <footer>
+    Clarity Shift Lab<br>
+    <a href="https://clarity-shift-lab.github.io/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+    <br>Photos: Unsplash
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var KEY="csl-weekly-01";
+  var store={days:[{},{},{},{},{},{},{}],q1:"",q2:"",q3:"",routine:"",own:""};
+  try{var s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&s.days&&s.days.length===7){store=Object.assign(store,s)}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+  var $=function(id){return document.getElementById(id)};
+  function toast(t){var el=$("toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove("on")},1800)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+  if(document.body.classList.contains("tb")){var a=document.querySelector(".th-a");if(a)a.remove()}
+
+  var samples=["会議で自分の番が\n回ってきた瞬間、\n上司の表情が気になった","既読がついたのに\n返事が来ない時、\n嫌われたかなと気になった","飲み会に誘われた瞬間、\n断ったらどう思われるか\n気になった"];
+  var tEl=$("typed"),si=0,ci=0,del=false;
+  function tick(){
+    var s=samples[si];
+    if(!del){ci++;tEl.textContent=s.slice(0,ci);if(ci>=s.length){del=true;setTimeout(tick,2600);return}}
+    else{ci-=2;if(ci<=0){ci=0;del=false;si=(si+1)%samples.length}tEl.textContent=s.slice(0,ci)}
+    setTimeout(tick,del?28:85);
+  }
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){tEl.textContent=samples[0]}else{tick()}
+
+  var checks=[].slice.call(document.querySelectorAll("#checks .check"));
+  checks.forEach(function(b){b.onclick=function(){
+    b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")==="true"?"false":"true");
+    var n=checks.filter(function(x){return x.getAttribute("aria-pressed")==="true"}).length;
+    $("checkMsg").classList.toggle("on",n>0);
+  }});
+
+  function scale(el,get,set){
+    var bs=[].slice.call(el.querySelectorAll("button"));
+    function paint(){var v=get();bs.forEach(function(b,i){b.setAttribute("aria-pressed",String(v===i+1))})}
+    bs.forEach(function(b,i){b.onclick=function(){set(get()===i+1?0:i+1);paint()}});
+    paint();return paint;
+  }
+
+  var mk={v:0};
+  function mkRender(){
+    var a=$("mk1").value.trim(),b=$("mk2").value.trim(),r=$("mkResult");
+    if(!a&&!b&&!mk.v){r.innerHTML='<span class="ph">ここに1行ができます</span>';return}
+    r.textContent="「"+(a||"〇〇の瞬間")+"、"+(b||"〇〇")+"が気になった"+(mk.v?"（"+mk.v+"）":"")+"」";
+  }
+  var mkPaint=scale($("mkScale"),function(){return mk.v},function(v){mk.v=v;mkRender()});
+  $("mk1").oninput=mkRender;$("mk2").oninput=mkRender;
+  var exs=[["会議で自分の番が回ってきた瞬間","上司の表情"],["朝のミーティングで順番が近づいてきた瞬間","みんなの視線"],["飲み会に誘われた瞬間","断ったらどう思われるか"]],ei=0;
+  $("mkEx").onclick=function(){var e=exs[ei%exs.length];ei++;$("mk1").value=e[0];$("mk2").value=e[1];mkRender()};
+  $("mkToDay").onclick=function(){
+    var a=$("mk1").value.trim(),b=$("mk2").value.trim();
+    if(!a||!b){toast("01と02を入れてみてください");return}
+    store.days[0].t=a+"、"+b+"が気になった";store.days[0].v=mk.v||0;store.days[0].none=false;save();
+    showDay(0);renderReview();toast("Day1に書き写しました");
+    $("week").scrollIntoView({behavior:"smooth",block:"start"});
+  };
+
+  var ex=[["「朝のミーティングで<br>順番が近づいてきた瞬間、<br>みんなの視線が気になった」","話す前の\"待ち時間\"に、<br>力が入りやすい。"],
+          ["「既読がついたのに<br>返事が来ない時、<br>嫌われたかなと気になった」","相手の反応が見えない時に、<br>力が入りやすい。"],
+          ["「飲み会に誘われた瞬間、<br>断ったらどう思われるか<br>気になった」","断る前の一瞬に、<br>力が入りやすい。"]];
+  var tabs=[].slice.call(document.querySelectorAll("#tabs .tab")),flip=$("flip");
+  function showEx(i){tabs.forEach(function(t,j){t.setAttribute("aria-selected",String(i===j))});flip.classList.remove("on");$("flipBtn").textContent="めくって「見えたこと」を見る";$("exLine").innerHTML=ex[i][0];$("exSeen").innerHTML=ex[i][1]}
+  tabs.forEach(function(t,i){t.onclick=function(){showEx(i)}});
+  $("flipBtn").onclick=function(){var on=flip.classList.toggle("on");this.textContent=on?"もう一度、1行を見る":"めくって「見えたこと」を見る"};
+  flip.onclick=function(){$("flipBtn").click()};
+  showEx(0);
+
+  var hints=["今日、一番ドキッとした瞬間は？","今日、誰の前で一番力が入った？","その時、体のどこに<br>力が入ってた？（肩・手・声など）","力が入る前、<br>頭の中で何て言ってた？","逆に、力が抜けてた瞬間は？","今日、いつも通りで<br>いられた場面は？","この1週間で、<br>一番多かった瞬間は？"];
+  var cur=0,dots=$("dots");
+  for(var i=0;i<7;i++){(function(i){var d=document.createElement("button");d.className="dot";d.textContent=i+1;d.setAttribute("role","tab");d.setAttribute("aria-label","Day"+(i+1));d.onclick=function(){showDay(i)};dots.appendChild(d)})(i)}
+  function filled(d){return !!(d&&(d.none||(d.t&&d.t.trim())))}
+  function paintDots(){[].slice.call(dots.children).forEach(function(d,i){d.setAttribute("aria-selected",String(i===cur));d.classList.toggle("filled",filled(store.days[i]))})}
+  var dayPaint=scale($("dayScale"),function(){return store.days[cur].v||0},function(v){store.days[cur].v=v;store.days[cur].none=false;$("noneBtn").setAttribute("aria-pressed","false");commit()});
+  function showDay(i){
+    cur=i;var d=store.days[i];
+    $("dn").textContent="Day"+(i+1);
+    $("hint").innerHTML="<small>ヒント</small>"+hints[i];
+    $("dayText").value=d.t||"";$("noneBtn").setAttribute("aria-pressed",String(!!d.none));
+    dayPaint();paintDots();
+    $("prevDay").disabled=i===0;$("nextDay").disabled=i===6;
+  }
+  var sv;
+  function commit(){save();paintDots();renderReview();var s=$("saved");s.classList.add("on");clearTimeout(sv);sv=setTimeout(function(){s.classList.remove("on")},1200)}
+  $("dayText").oninput=function(){store.days[cur].t=this.value;if(this.value.trim()){store.days[cur].none=false;$("noneBtn").setAttribute("aria-pressed","false")}commit()};
+  $("noneBtn").onclick=function(){var on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",String(on));store.days[cur].none=on;if(on){store.days[cur].t="";store.days[cur].v=0;$("dayText").value="";dayPaint()}commit()};
+  $("prevDay").onclick=function(){if(cur>0)showDay(cur-1)};
+  $("nextDay").onclick=function(){if(cur<6)showDay(cur+1)};
+  function lineOf(d){if(d.none)return"今日はなかった";if(!d.t||!d.t.trim())return"";return d.t.trim()+(d.v?"（"+d.v+"）":"")}
+  $("copyAll").onclick=function(){
+    var txt=store.days.map(function(d,i){return"Day"+(i+1)+"："+(lineOf(d)||"")}).join("\n");
+    var done=function(){toast("コピーしました。メモに貼りつけられます")};
+    function fallback(){var ta=document.createElement("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done()}catch(e){toast("コピーできませんでした")}ta.remove()}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback)}else fallback();
+  };
+
+  function renderReview(){
+    var max=0;store.days.forEach(function(d){if(!d.none&&d.v>max)max=d.v});
+    $("list").innerHTML=store.days.map(function(d,i){
+      var l=lineOf(d),top=max>0&&!d.none&&d.v===max;
+      return '<div class="li'+(top?' top':'')+(l?'':' empty')+'"><span class="d">Day'+(i+1)+'</span><span class="t">'+(l?esc(d.none?l:d.t.trim()):"まだ書いていません")+'</span><span class="n">'+(d.v&&!d.none?d.v:"")+'</span></div>';
+    }).join("");
+    var a=$("q2auto");
+    if(max>0){var days=[];store.days.forEach(function(d,i){if(!d.none&&d.v===max)days.push("Day"+(i+1))});a.textContent="一番大きかったのは、"+days.join("・")+"（"+max+"）です。上の色がついた行を見てみてください。";a.classList.add("on")}
+    else{a.classList.remove("on")}
+  }
+  ["q1","q2","q3"].forEach(function(k){var el=$(k);el.value=store[k]||"";el.oninput=function(){store[k]=el.value;save();if(k==="q3")renderCard()}});
+
+  var picks=[].slice.call(document.querySelectorAll("#picks .pick"));
+  function paintPicks(){picks.forEach(function(p){p.setAttribute("aria-pressed",String(store.routine===p.getAttribute("data-v")))})}
+  picks.forEach(function(p){p.onclick=function(){var t=p.getAttribute("data-v");store.routine=store.routine===t?"":t;if(store.routine){store.own="";$("ownRoutine").value=""}save();paintPicks();renderCard()}});
+  $("ownRoutine").value=store.own||"";
+  $("ownRoutine").oninput=function(){store.own=this.value;if(this.value.trim()){store.routine=""}save();paintPicks();renderCard()};
+  function setDD(el,v,ph){if(v&&v.trim()){el.textContent=v.trim();el.classList.remove("ph")}else{el.textContent=ph;el.classList.add("ph")}}
+  function renderCard(){
+    setDD($("cdPoint"),store.q3,"Question 3を書くと入ります");
+    setDD($("cdRoutine"),(store.own&&store.own.trim())?store.own:store.routine,"ルーティンを選ぶと入ります");
+  }
+
+  [].slice.call(document.querySelectorAll("#faq .fq")).forEach(function(f){var b=f.querySelector("button"),a=f.querySelector(".a");b.onclick=function(){var o=f.classList.toggle("open");a.style.maxHeight=o?a.scrollHeight+"px":"0"}});
+
+  var els=document.querySelectorAll(".fade");
+  if(!("IntersectionObserver" in window)){[].forEach.call(els,function(e){e.classList.add("show")})}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("show");io.unobserve(e.target)}})},{threshold:.08});[].forEach.call(els,function(e){io.observe(e)})}
+
+  showDay(0);renderReview();paintPicks();renderCard();
+})();
+</script>
+<script type="module">
+try{
+  const {loadDefaultJapaneseParser}=await import("https://cdn.jsdelivr.net/npm/budoux@0.7.0/+esm");
+  const p=loadDefaultJapaneseParser();
+  document.querySelectorAll("p:not(#typed):not(.en):not(.en-title):not(.en-sub):not(.lbl), .qt, .fq button, .pick, .hint").forEach(el=>{try{p.applyToElement(el)}catch(e){}});
+}catch(e){}
+</script>
+</body>
+</html>
